@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Keyboard-Driven Interface</h2>
+    @if (keys.buffer()) {
+        <div>
+            <ul>
+                <li>S - Search</li>
+                <li>N - Navigate</li>
+            </ul>
+        </div>
+    }
+    @if (keys.shortcut(); as shortcut) {
+        <p>
+            Executed shortcut: <kbd>Ctrl + k {{ shortcut.key }}</kbd>
+        </p>
+    }
+    @if (keys.shortcuts(); as shortcuts) {
+        <div>
+            @for (shortcut of shortcuts; track $index) {
+                <p>
+                    <code>{{ shortcut.key }}</code>
+                </p>
+            }
+        </div>
+    }
+</div>

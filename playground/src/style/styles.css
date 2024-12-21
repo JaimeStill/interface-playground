@@ -1,0 +1,10 @@
+@layer reset, theme, layout;
+
+@import url(./reset.css);
+@import url(./theme.css);
+@import url(./layout.css);
+
+div.container {
+    padding: var(--pad);
+    height: 100%;
+}

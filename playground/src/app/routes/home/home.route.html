@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>Interface Playground</h2>
+    <div class="grid">
+        @for (link of links; track link.url) {
+            <a class="card" [routerLink]="link.url">
+                {{ link.label }}
+            </a>
+        }
+    </div>
+</div>

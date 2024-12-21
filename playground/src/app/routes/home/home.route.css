@@ -1,0 +1,24 @@
+div.container {
+    padding: var(--pad);
+}
+
+div.grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--pad);
+}
+
+a.card {
+    background-color: var(--blue-bg);
+    border-radius: 4px;
+    padding: var(--pad);
+    text-align: center;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+a.card:hover,
+a.card:focus {
+    background-color: var(--yellow-bg);
+    color: var(--yellow);
+}
