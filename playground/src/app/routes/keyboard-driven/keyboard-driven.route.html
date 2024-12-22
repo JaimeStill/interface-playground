@@ -1,21 +1,9 @@
 <div class="container">
-    <h2>Keyboard-Driven Interface</h2>
-    <p>Press <kbd>Ctrl + K</kbd> to trigger keyboard shortcuts</p>
-    @if (keys.buffer() && keys.shortcuts) {
-        <div>
-            <ul>
-                @for (shortcut of keys.shortcuts; track shortcut[0]) {
-                    <li>
-                        <kbd>{{ shortcut[1].key }}</kbd> -
-                        {{ shortcut[1].name }}
-                    </li>
-                }
-            </ul>
-        </div>
-    }
-    <div class="search">
-        <input type="text" placeholder="Search (^k s)" #search />
+    <div class="heading">
+        <h2>Keyboard-Driven Interface</h2>
+        <input type="text" #bar />
     </div>
+    <p>Press <kbd>Ctrl + K</kbd> to trigger keyboard shortcuts</p>
     @if (keys.latest(); as latest) {
         <p>
             Executed shortcut: <kbd>{{ latest.key }}</kbd> - {{ latest.name }}
@@ -28,6 +16,17 @@
                 <p>
                     <kbd>{{ shortcut.key }}</kbd>
                 </p>
+            }
+        </div>
+    }
+    @if (photos(); as photos) {
+        <div class="gallery">
+            @for (photo of photos; track photo.id) {
+                <div class="image">
+                    <img [src]="photo.download_url" [alt]="photo.url" />
+                    <h3>{{ photo.author }}</h3>
+                    <a [href]="photo.url" target="_blank">{{ photo.url }}</a>
+                </div>
             }
         </div>
     }
