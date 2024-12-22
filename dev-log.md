@@ -8,8 +8,8 @@ Current Focus: [**keyboard-driven interface**](./designs/keyboard-driven-interfa
 - [**`app.html`**](./playground/src/app/app.html) ensures that routes are only rendered whenever **`AppService.body`** is not null.
 - [**`KeyboardDrivenRoute`**](./playground/src/app/routes/keyboard-driven/keyboard-driven.route.ts) initializes an instance of [**`KeyboardProcessor`**](./playground/src/app/models/keyboard.processor.ts) and reacts to keyboard events in its [**template**](./playground/src/app/routes/keyboard-driven/keyboard-driven.route.html):
     - If the **`KeyboardProcessor.buffer`** signal becomes true, render available shortcuts.
-    - Whenever the **`KeyboardProcessor.shortcut`** signal emits, update the most recently executed shortcut.
-    - Log all of the executed shortcuts using the **`KeyboardProcessor.shortcuts`** signal.
+    - Whenever the **`KeyboardProcessor.latest`** signal emits, update the most recently executed shortcut.
+    - Log all of the executed shortcuts using the **`KeyboardProcessor.history`** signal.
 
 ## Tasks
 

@@ -1,0 +1,12 @@
+div.search {
+    display: flex;
+    gap: var(--pad);
+    align-items: center;
+}
+
+div.history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pad);
+    align-items: center;
+}

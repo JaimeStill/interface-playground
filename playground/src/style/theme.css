@@ -105,4 +105,13 @@
         color: var(--green);
         font-size: .9rem;
     }
+
+    kbd {
+        background-color: var(--bg-2);
+        border-radius: 4px;
+        color: var(--red-2);
+        display: inline-block;
+        font-weight: 500;
+        padding: var(--pad-sm);
+    }
 }

@@ -8,3 +8,7 @@ div.container {
     padding: var(--pad);
     height: 100%;
 }
+
+div.container>*+* {
+    margin-top: 1em;
+}

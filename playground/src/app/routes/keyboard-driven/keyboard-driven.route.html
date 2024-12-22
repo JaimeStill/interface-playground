@@ -1,23 +1,32 @@
 <div class="container">
     <h2>Keyboard-Driven Interface</h2>
-    @if (keys.buffer()) {
+    <p>Press <kbd>Ctrl + K</kbd> to trigger keyboard shortcuts</p>
+    @if (keys.buffer() && keys.shortcuts) {
         <div>
             <ul>
-                <li>S - Search</li>
-                <li>N - Navigate</li>
+                @for (shortcut of keys.shortcuts; track shortcut[0]) {
+                    <li>
+                        <kbd>{{ shortcut[1].key }}</kbd> -
+                        {{ shortcut[1].name }}
+                    </li>
+                }
             </ul>
         </div>
     }
-    @if (keys.shortcut(); as shortcut) {
+    <div class="search">
+        <input type="text" placeholder="Search (^k s)" #search />
+    </div>
+    @if (keys.latest(); as latest) {
         <p>
-            Executed shortcut: <kbd>Ctrl + k {{ shortcut.key }}</kbd>
+            Executed shortcut: <kbd>{{ latest.key }}</kbd> - {{ latest.name }}
         </p>
     }
-    @if (keys.shortcuts(); as shortcuts) {
-        <div>
-            @for (shortcut of shortcuts; track $index) {
+    @if (keys.hasHistory() && keys.history(); as history) {
+        <h3>Chord History</h3>
+        <div class="history">
+            @for (shortcut of history; track $index) {
                 <p>
-                    <code>{{ shortcut.key }}</code>
+                    <kbd>{{ shortcut.key }}</kbd>
                 </p>
             }
         </div>
