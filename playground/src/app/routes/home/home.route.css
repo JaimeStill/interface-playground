@@ -4,7 +4,7 @@ div.container {
 
 div.grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--pad);
 }
 
@@ -21,4 +21,16 @@ a.card:hover,
 a.card:focus {
     background-color: var(--yellow-bg);
     color: var(--yellow);
+}
+
+@media (max-width: 1130px) {
+    div.grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 850px) {
+    div.grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }

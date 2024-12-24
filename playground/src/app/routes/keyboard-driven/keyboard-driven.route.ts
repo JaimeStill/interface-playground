@@ -1,7 +1,7 @@
 import { Component, computed, effect, ElementRef, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
 import { KeyboardProcessor, Photo, Photos } from '../../models';
 import { AppService } from '../../services';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
     styleUrl: 'keyboard-driven.route.css'
 })
 export class KeyboardDrivenRoute implements OnInit, OnDestroy {
-    private reset: () => void = () => { };
+    private subs: Subscription[] = [];
     keys: KeyboardProcessor;
     bar = viewChild.required<ElementRef<HTMLInputElement>>('bar');
     photos = signal<Photo[]>(Photos);
@@ -20,53 +20,40 @@ export class KeyboardDrivenRoute implements OnInit, OnDestroy {
         app: AppService
     ) {
         this.keys = new KeyboardProcessor(app.body()!.nativeElement);
+    }
 
+    ngOnInit(): void {
         this.keys.set({
             key: 's',
             name: 'Search',
             description: 'Search for values',
-            trigger: this.search.bind(this)
+            trigger: (() => this.bar().nativeElement.focus()).bind(this)
         });
-    }
 
-    ngOnInit(): void {
-        fromEvent(this.bar().nativeElement, 'blur')
-            .subscribe({
-                next: () => {
-                    console.log('lost focus');
-                    this.reset();
-                }
-            })
+        this.subs.push(
+            fromEvent(this.bar().nativeElement, 'input')
+                .pipe(
+                    distinctUntilChanged(),
+                    debounceTime(150),
+                    map((event: Event) => (<HTMLInputElement>event.target).value)
+                ).subscribe((value: string) => {
+                    this.photos.update(() =>
+                        value.length > 0
+                            ? Photos.filter((photo) =>
+                                photo.author
+                                    .toLocaleLowerCase()
+                                    .includes(
+                                        value.toLocaleLowerCase()
+                                    )
+                            )
+                            : Photos
+                    )
+                })
+        );
     }
 
     ngOnDestroy(): void {
         this.keys.destroy();
-    }
-
-    search(): void {
-        this.bar().nativeElement.focus();
-
-        const sub = fromEvent(this.bar().nativeElement, 'input')
-            .pipe(
-                distinctUntilChanged(),
-                debounceTime(150),
-                map((event: Event) => (<HTMLInputElement>event.target).value)
-            ).subscribe((value: string) => {
-                this.photos.update(() => {
-                    console.log(value);
-                    return value.length > 0
-                        ? Photos.filter((photo) => {
-                            console.log('photo filter:', photo);
-                            return photo.author.toLocaleLowerCase().includes(value.toLocaleLowerCase())
-                        })
-                        : Photos
-                })
-            });
-
-        this.reset = () => {
-            sub.unsubscribe();
-            this.bar().nativeElement.value = '';
-            this.photos.update(() => Photos);
-        }
+        this.subs.forEach(x => x.unsubscribe());
     }
 }
