@@ -14,7 +14,7 @@ export const Photos: Photo[] = [
         width: 1280,
         height: 901,
         url: "https://unsplash.com/photos/aeVA-j1y2BY",
-        download_url: "https://picsum.photos/id/30/1280/901"
+        download_url: "https://picsum.photos/id/30/360"
     },
     {
         id: "31",
@@ -22,7 +22,7 @@ export const Photos: Photo[] = [
         width: 3264,
         height: 4912,
         url: "https://unsplash.com/photos/7Vz3DtQDT3Q",
-        download_url: "https://picsum.photos/id/31/3264/4912"
+        download_url: "https://picsum.photos/id/31/360"
     },
     {
         "id": "32",
@@ -30,7 +30,7 @@ export const Photos: Photo[] = [
         "width": 4032,
         "height": 3024,
         "url": "https://unsplash.com/photos/eG3k60PrTGY",
-        "download_url": "https://picsum.photos/id/32/4032/3024"
+        "download_url": "https://picsum.photos/id/32/360"
     },
     {
         id: "33",
@@ -38,7 +38,7 @@ export const Photos: Photo[] = [
         width: 5000,
         height: 3333,
         url: "https://unsplash.com/photos/LBI7cgq3pbM",
-        download_url: "https://picsum.photos/id/33/5000/3333"
+        download_url: "https://picsum.photos/id/33/360"
     },
     {
         id: "34",
@@ -46,7 +46,7 @@ export const Photos: Photo[] = [
         width: 3872,
         height: 2592,
         url: "https://unsplash.com/photos/zZvsEMPxjIA",
-        download_url: "https://picsum.photos/id/34/3872/2592"
+        download_url: "https://picsum.photos/id/34/360"
     },
     {
         id: "35",
@@ -54,7 +54,7 @@ export const Photos: Photo[] = [
         width: 2758,
         height: 3622,
         url: "https://unsplash.com/photos/znM0ujn2RUA",
-        download_url: "https://picsum.photos/id/35/2758/3622"
+        download_url: "https://picsum.photos/id/35/360"
     },
     {
         "id": "36",
@@ -62,7 +62,7 @@ export const Photos: Photo[] = [
         "width": 4179,
         "height": 2790,
         "url": "https://unsplash.com/photos/osSryggkso4",
-        "download_url": "https://picsum.photos/id/36/4179/2790"
+        "download_url": "https://picsum.photos/id/36/360"
     },
     {
         id: "37",
@@ -70,7 +70,7 @@ export const Photos: Photo[] = [
         width: 2000,
         height: 1333,
         url: "https://unsplash.com/photos/erTjj730fMk",
-        download_url: "https://picsum.photos/id/37/2000/1333"
+        download_url: "https://picsum.photos/id/37/360"
     },
     {
         id: "38",
@@ -78,7 +78,7 @@ export const Photos: Photo[] = [
         width: 1280,
         height: 960,
         url: "https://unsplash.com/photos/JabLtzJl8bc",
-        download_url: "https://picsum.photos/id/38/1280/960"
+        download_url: "https://picsum.photos/id/38/360"
     },
     {
         id: "39",
@@ -86,6 +86,6 @@ export const Photos: Photo[] = [
         width: 3456,
         height: 2304,
         url: "https://unsplash.com/photos/pFqrYbhIAXs",
-        download_url: "https://picsum.photos/id/39/3456/2304"
+        download_url: "https://picsum.photos/id/39/360"
     }
 ];
