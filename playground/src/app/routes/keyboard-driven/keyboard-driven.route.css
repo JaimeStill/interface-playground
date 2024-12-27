@@ -16,7 +16,6 @@ div.heading input[type="text"] {
     transition: border-color 120ms ease-in-out;
 
     &:focus {
-        border-width: 3px;
         border-image: linear-gradient(to right, var(--red), var(--blue));
         border-image-slice: 1;
     }
